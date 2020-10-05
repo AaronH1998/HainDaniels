@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using HainDanielsApi.Repositories;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,6 +12,7 @@ namespace HainDanielsApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
+            services.AddTransient<IProductRepository, MockProductRepository>();
             services.AddMvc();
         }
 

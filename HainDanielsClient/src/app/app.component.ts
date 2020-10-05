@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import{HttpClient} from '@angular/common/http'
 
 @Component({
   selector: 'app-root',
@@ -9,7 +8,4 @@ import{HttpClient} from '@angular/common/http'
 export class AppComponent {
   title = 'HainDanielsClient';
 
-  constructor(httpClient:HttpClient){
-    httpClient.get("https://localhost:44392/api/test").subscribe();
-  }
 }
