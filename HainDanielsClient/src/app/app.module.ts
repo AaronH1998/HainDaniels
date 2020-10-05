@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { ProductsComponent } from './products/products.component';
+import { NavigationLinksComponent } from './navigation-links/navigation-links.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductsComponent
+    ProductsComponent,
+    NavigationLinksComponent
   ],
   imports: [
     BrowserModule,
