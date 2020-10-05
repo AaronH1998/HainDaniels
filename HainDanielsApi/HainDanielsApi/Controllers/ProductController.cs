@@ -18,7 +18,7 @@ namespace HainDanielsApi.Controllers
         }
 
         [HttpGet]
-        public async Task<List<Item>> GetItems()
+        public async Task<List<Product>> GetProducts()
         {
             return await productRepository.GetProductsAsync();
         }

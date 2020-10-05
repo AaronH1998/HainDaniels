@@ -1,8 +1,12 @@
-﻿namespace HainDanielsApi.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace HainDanielsApi.Models
 {
-    public class Item
+    public class Product
     {
+        [Key]
         public int M3Item { get; set; }
+
         public string Description { get; set; }
         public string JarCode { get; set; }
         public string VarietyCode { get; set; }

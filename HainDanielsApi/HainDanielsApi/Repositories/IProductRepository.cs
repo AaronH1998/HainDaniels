@@ -6,6 +6,6 @@ namespace HainDanielsApi.Repositories
 {
     public interface IProductRepository
     {
-        Task<List<Item>> GetProductsAsync();
+        Task<List<Product>> GetProductsAsync();
     }
 }
