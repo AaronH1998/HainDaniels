@@ -1,5 +1,6 @@
 <app-navigation-links></app-navigation-links>
-
+<div class="ml-5 mr-5">
+<h2>{{title}}</h2>
 <kendo-grid [data]="products">
     <kendo-grid-column field="m3Item" title="M3 SKU" [width]="100"></kendo-grid-column>
     <kendo-grid-column field="description" title="Description" [width]="200"></kendo-grid-column>
@@ -15,3 +16,4 @@
     <kendo-grid-column field="salesDays" title="Sales Days" [width]="100"></kendo-grid-column>
     <kendo-grid-column field="batchOrderMultiples" title="Batch Order Multiples" [width]="100"></kendo-grid-column>
 </kendo-grid>
+</div>
