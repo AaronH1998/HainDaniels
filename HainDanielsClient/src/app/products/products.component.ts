@@ -28,7 +28,10 @@ export class ProductsComponent implements OnInit {
       this.toastr.error("File must be of CSV format");
       return;
     }else{
-      this.toastr.info("Importing file to database");
+      this.toastr.info("Importing file to database",'',{
+        timeOut: 0,
+        extendedTimeOut:0
+      });
     }
     this.productService.importFile(file).subscribe((result)=>{
       this.toastr.clear();

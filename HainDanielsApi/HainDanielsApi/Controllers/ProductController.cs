@@ -4,6 +4,7 @@ using HainDanielsApi.Models;
 using HainDanielsApi.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -51,7 +52,7 @@ namespace HainDanielsApi.Controllers
                     csv.Configuration.TrimOptions = CsvHelper.Configuration.TrimOptions.Trim;
                     csv.Configuration.TypeConverterCache.AddConverter(typeof(int), new RemoveWhiteSpaceFromIntConverter());
                     csv.Configuration.RegisterClassMap<ProductMap>();
-                    var records = csv.GetRecords<Product>();
+                    var records = csv.GetRecords<Product>().Where(p => p.M3Item != 0 && p.NetWeight != 0 && p.UnitsPerCase != 0 && !String.IsNullOrWhiteSpace(p.Description)).ToArray();
 
                     foreach (var product in records)
                     {
