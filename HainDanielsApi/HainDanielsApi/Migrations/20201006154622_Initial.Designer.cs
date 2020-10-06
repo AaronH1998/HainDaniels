@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HainDanielsApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201005151127_Initial")]
+    [Migration("20201006154622_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -22,7 +22,7 @@ namespace HainDanielsApi.Migrations
 
             modelBuilder.Entity("HainDanielsApi.Models.Product", b =>
                 {
-                    b.Property<int>("M3Item")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -30,13 +30,16 @@ namespace HainDanielsApi.Migrations
 
                     b.Property<string>("Cap");
 
-                    b.Property<string>("Description");
+                    b.Property<string>("Description")
+                        .IsRequired();
 
                     b.Property<string>("Domino");
 
                     b.Property<string>("JarCode");
 
                     b.Property<int>("Label");
+
+                    b.Property<int>("M3Item");
 
                     b.Property<double>("NetWeight");
 
@@ -50,7 +53,7 @@ namespace HainDanielsApi.Migrations
 
                     b.Property<string>("Zambelli");
 
-                    b.HasKey("M3Item");
+                    b.HasKey("ID");
 
                     b.ToTable("Products");
                 });

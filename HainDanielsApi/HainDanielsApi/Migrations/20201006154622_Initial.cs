@@ -11,9 +11,10 @@ namespace HainDanielsApi.Migrations
                 name: "Products",
                 columns: table => new
                 {
-                    M3Item = table.Column<int>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Description = table.Column<string>(nullable: true),
+                    M3Item = table.Column<int>(nullable: false),
+                    Description = table.Column<string>(nullable: false),
                     JarCode = table.Column<string>(nullable: true),
                     VarietyCode = table.Column<string>(nullable: true),
                     Zambelli = table.Column<string>(nullable: true),
@@ -28,7 +29,7 @@ namespace HainDanielsApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Products", x => x.M3Item);
+                    table.PrimaryKey("PK_Products", x => x.ID);
                 });
         }
 
