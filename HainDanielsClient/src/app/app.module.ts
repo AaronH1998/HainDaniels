@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import{NgxCsvParserModule} from 'ngx-csv-parser';
+import{BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import{ToastrModule} from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,7 +22,11 @@ import { NavigationLinksComponent } from './navigation-links/navigation-links.co
     AppRoutingModule,
     HttpClientModule,
     GridModule,
-    NgxCsvParserModule
+    NgxCsvParserModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut:5000
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

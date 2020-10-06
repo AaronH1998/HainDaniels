@@ -34,7 +34,7 @@ namespace HainDanielsApi.Controllers
         {
             if (!file.FileName.Contains(".csv"))
             {
-                return Ok(new { message = "File must be of CSV format." });
+                return Ok(new { success = false, message = "File must be of CSV format." });
             }
             if (file.Length > 0)
             {
@@ -60,7 +60,7 @@ namespace HainDanielsApi.Controllers
                 }
             }
 
-            return Ok(new { message = "File succesfully uploaded." });
+            return Ok(new { success = true, message = "File succesfully uploaded." });
         }
     }
 }
