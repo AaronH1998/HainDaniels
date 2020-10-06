@@ -19,6 +19,8 @@ export class ProductService {
   }
 
   importFile(fileToImport:File):Observable<Response>{
+    
+
     const formData:FormData = new FormData();
     formData.append('itemsIn',fileToImport,fileToImport.name);
 

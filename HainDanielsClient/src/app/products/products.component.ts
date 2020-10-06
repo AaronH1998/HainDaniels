@@ -22,8 +22,15 @@ export class ProductsComponent implements OnInit {
   }
 
   importFile(files:FileList){
-    this.productService.importFile(files.item(0)).subscribe((result)=>{
+    let file = files[0];
+    if(!this.hasExtension(file.name,'csv')){
+      return;
+    }
+    this.productService.importFile(file).subscribe((result)=>{
       console.log(result);
     });
+  }
+  private hasExtension(fileName:string,ext:string){
+    return fileName.split('.').pop() == ext;
   }
 }
