@@ -25,7 +25,7 @@ import { NavigationLinksComponent } from './navigation-links/navigation-links.co
     NgxCsvParserModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      timeOut:5000
+      timeOut:10000
     })
   ],
   providers: [],
