@@ -1,4 +1,5 @@
 ﻿using CsvHelper;
+using CsvHelper.TypeConversion;
 using HainDanielsApi.Extensions;
 using HainDanielsApi.Models;
 using HainDanielsApi.Repositories;
@@ -48,31 +49,47 @@ namespace HainDanielsApi.Controllers
                 using (var reader = new StreamReader(filePath))
                 using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
                 {
+                    var bad = new List<string>();
                     csv.Configuration.TrimOptions = CsvHelper.Configuration.TrimOptions.Trim;
                     csv.Configuration.TypeConverterCache.AddConverter(typeof(int), new RemoveWhiteSpaceFromIntConverter());
+                    csv.Configuration.BadDataFound = record =>
+                    {
+                        bad.Add(record.RawRecord);
+                    };
                     csv.Configuration.RegisterClassMap<ProductMap>();
 
-                    var invalidRecords = csv.GetRecords<Product>()
+                    try
+                    {
+                        var invalidRecords = csv.GetRecords<Product>()
                                             .Where(p => p.M3Item == 0 || p.NetWeight == 0 || p.UnitsPerCase == 0 || string.IsNullOrWhiteSpace(p.Description))
                                             .ToList();
 
-                    if (invalidRecords.Any())
+                        if (invalidRecords.Any())
+                        {
+                            return Ok(new { success = false, message = "One or more products has a missing required field. The required fields are: M3 Item, Net_Weight,Units_Per_Case and Description" });
+                        }
+
+                        var records = csv.GetRecords<Product>()
+                                   .Where(p => p.M3Item != 0 && p.NetWeight != 0 && p.UnitsPerCase != 0 && !string.IsNullOrWhiteSpace(p.Description))
+                                   .ToArray();
+
+                        foreach (var product in records)
+                        {
+                            productRepository.AddProductAsync(product);
+                        }
+                    }
+                    catch (TypeConverterException ex)
                     {
-                        return Ok(new { success = false, message = "One or more products has a missing required field. The required fields are: M3 Item, Net_Weight,Units_Per_Case and Description"  });
+                        return Ok(new { success = false, message = "One or more fields are of the incorrect data type" });
                     }
 
-                    var records = csv.GetRecords<Product>()
-                                    .Where(p => p.M3Item != 0 && p.NetWeight != 0 && p.UnitsPerCase != 0 && !string.IsNullOrWhiteSpace(p.Description))
-                                    .ToArray();
-
-                    foreach (var product in records)
-                    {
-                        productRepository.AddProductAsync(product);
-                    }
                 }
             }
 
             return Ok(new { success = true, message = "File succesfully uploaded." });
         }
+
+
+
     }
 }

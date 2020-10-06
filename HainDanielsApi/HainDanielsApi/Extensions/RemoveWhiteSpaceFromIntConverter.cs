@@ -15,7 +15,9 @@ namespace HainDanielsApi.Extensions
                 return 0;
             }
 
+
             return base.ConvertFromString(text, row, memberMapData);
+
         }
     }
 }
