@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\aaron\\OneDrive\\Documents\\Hain Daniels\\HainDanielsApi\\HainDanielsApi\\HainDanielsApi.csproj": {}
+    "C:\\Users\\aaron\\OneDrive\\Documents\\HainDaniels\\HainDanielsApi\\HainDanielsApi\\HainDanielsApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\aaron\\OneDrive\\Documents\\Hain Daniels\\HainDanielsApi\\HainDanielsApi\\HainDanielsApi.csproj": {
+    "C:\\Users\\aaron\\OneDrive\\Documents\\HainDaniels\\HainDanielsApi\\HainDanielsApi\\HainDanielsApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aaron\\OneDrive\\Documents\\Hain Daniels\\HainDanielsApi\\HainDanielsApi\\HainDanielsApi.csproj",
+        "projectUniqueName": "C:\\Users\\aaron\\OneDrive\\Documents\\HainDaniels\\HainDanielsApi\\HainDanielsApi\\HainDanielsApi.csproj",
         "projectName": "HainDanielsApi",
-        "projectPath": "C:\\Users\\aaron\\OneDrive\\Documents\\Hain Daniels\\HainDanielsApi\\HainDanielsApi\\HainDanielsApi.csproj",
+        "projectPath": "C:\\Users\\aaron\\OneDrive\\Documents\\HainDaniels\\HainDanielsApi\\HainDanielsApi\\HainDanielsApi.csproj",
         "packagesPath": "C:\\Users\\aaron\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aaron\\OneDrive\\Documents\\Hain Daniels\\HainDanielsApi\\HainDanielsApi\\obj\\",
+        "outputPath": "C:\\Users\\aaron\\OneDrive\\Documents\\HainDaniels\\HainDanielsApi\\HainDanielsApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -43,6 +43,10 @@
       "frameworks": {
         "netcoreapp2.2": {
           "dependencies": {
+            "CsvHelper": {
+              "target": "Package",
+              "version": "[15.0.6, )"
+            },
             "Microsoft.AspNetCore.App": {
               "suppressParent": "All",
               "target": "Package",

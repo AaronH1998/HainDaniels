@@ -9,7 +9,8 @@ import { ProductService } from '../services/product.service';
 })
 export class ProductsComponent implements OnInit {
   title="Products";
-  products:Product[]
+  products:Product[];
+
   constructor(private productService:ProductService) { }
 
   ngOnInit(): void {
@@ -18,5 +19,11 @@ export class ProductsComponent implements OnInit {
 
   getProducts(){
     this.productService.getItems().subscribe(products => this.products = products);
+  }
+
+  importFile(files:FileList){
+    this.productService.importFile(files.item(0)).subscribe((result)=>{
+      console.log(result);
+    });
   }
 }
