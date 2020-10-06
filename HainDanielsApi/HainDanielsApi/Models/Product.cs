@@ -6,6 +6,8 @@ namespace HainDanielsApi.Models
     public class Product
     {
         [Key]
+        public int ID { get; set; }
+
         [Required]
         public int M3Item { get; set; }
 

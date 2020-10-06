@@ -1,5 +1,4 @@
 ﻿using HainDanielsApi.Models;
-using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,16 +21,32 @@ namespace HainDanielsApi.Repositories
             return await Task.FromResult(Products.ToList());
         }
 
-        public void AddProduct(Product product)
+        public void AddProductAsync(Product product)
         {
-            using (var transaction = context.Database.BeginTransaction())
+            var productEntity = context.Products.FirstOrDefault(p => p.M3Item == product.M3Item);
+
+            if (productEntity == null)
             {
-                context.Products.Add(product);
-                context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Products ON;");
-                context.SaveChanges();
-                context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT Products OFF;");
-                transaction.Commit();
+                productEntity = new Product();
+
+                context.Products.Add(productEntity);
             }
+
+            productEntity.M3Item = product.M3Item;
+            productEntity.BatchOrderMultiples = product.BatchOrderMultiples;
+            productEntity.Cap = product.Cap;
+            productEntity.Description = product.Description;
+            productEntity.Domino = product.Domino;
+            productEntity.JarCode = product.JarCode;
+            productEntity.Label = product.Label;
+            productEntity.NetWeight = product.NetWeight;
+            productEntity.PalletQyt = product.PalletQyt;
+            productEntity.SalesDays = product.SalesDays;
+            productEntity.UnitsPerCase = product.UnitsPerCase;
+            productEntity.VarietyCode = product.VarietyCode;
+            productEntity.Zambelli = product.Zambelli;
+
+            context.SaveChanges();
         }
     }
 }

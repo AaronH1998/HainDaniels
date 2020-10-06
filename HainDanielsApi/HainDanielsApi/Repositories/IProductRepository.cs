@@ -8,6 +8,6 @@ namespace HainDanielsApi.Repositories
     {
         Task<List<Product>> GetProductsAsync();
 
-        void AddProduct(Product product);
+        void AddProductAsync(Product product);
     }
 }

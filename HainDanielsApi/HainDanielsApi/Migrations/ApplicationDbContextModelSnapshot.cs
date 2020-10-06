@@ -20,7 +20,7 @@ namespace HainDanielsApi.Migrations
 
             modelBuilder.Entity("HainDanielsApi.Models.Product", b =>
                 {
-                    b.Property<int>("M3Item")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -28,13 +28,16 @@ namespace HainDanielsApi.Migrations
 
                     b.Property<string>("Cap");
 
-                    b.Property<string>("Description");
+                    b.Property<string>("Description")
+                        .IsRequired();
 
                     b.Property<string>("Domino");
 
                     b.Property<string>("JarCode");
 
                     b.Property<int>("Label");
+
+                    b.Property<int>("M3Item");
 
                     b.Property<double>("NetWeight");
 
@@ -48,7 +51,7 @@ namespace HainDanielsApi.Migrations
 
                     b.Property<string>("Zambelli");
 
-                    b.HasKey("M3Item");
+                    b.HasKey("ID");
 
                     b.ToTable("Products");
                 });

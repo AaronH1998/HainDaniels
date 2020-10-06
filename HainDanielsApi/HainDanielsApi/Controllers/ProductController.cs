@@ -55,7 +55,7 @@ namespace HainDanielsApi.Controllers
 
                     foreach (var product in records)
                     {
-                        productRepository.AddProduct(product);
+                        productRepository.AddProductAsync(product);
                     }
                 }
             }
