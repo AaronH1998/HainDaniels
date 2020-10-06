@@ -32,6 +32,10 @@ namespace HainDanielsApi.Controllers
         [HttpPost]
         public async Task<IActionResult> ImportProductFiles([FromForm(Name = "itemsIn")] IFormFile file)
         {
+            if (!file.FileName.Contains(".csv"))
+            {
+                return Ok(new { message = "File must be of CSV format." });
+            }
             if (file.Length > 0)
             {
                 var filePath = Path.GetTempFileName();
@@ -56,7 +60,7 @@ namespace HainDanielsApi.Controllers
                 }
             }
 
-            return Ok(new { success = "true" });
+            return Ok(new { message = "File succesfully uploaded." });
         }
     }
 }
