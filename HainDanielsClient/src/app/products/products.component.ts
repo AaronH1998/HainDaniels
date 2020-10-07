@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GridDataResult, PageChangeEvent } from '@progress/kendo-angular-grid';
+import { DataStateChangeEvent, GridDataResult, PageChangeEvent } from '@progress/kendo-angular-grid';
 import { State } from '@progress/kendo-data-query';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
@@ -36,8 +36,8 @@ export class ProductsComponent implements OnInit {
     ).subscribe();
   }
 
-  public pageChange(event:PageChangeEvent){
-    this.state.skip = event.skip;
+  public dataStateChange(state:DataStateChangeEvent){
+    this.state = state;
     this.getProducts();
   }
 

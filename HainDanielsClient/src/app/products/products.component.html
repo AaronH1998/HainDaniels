@@ -9,19 +9,28 @@
     </label>
 </div>
 
-<kendo-grid [data]="products" [pageSize]="state.take" [skip]="state.skip" [pageable]="true" (pageChange)="pageChange($event)">
-    <kendo-grid-column field="M3Item" title="M3 SKU" [width]="100"></kendo-grid-column>
+<kendo-grid 
+    [data]="products" 
+    [skip]="state.skip"
+    [pageSize]="state.take"
+    [filter]="state.filter"
+    [sort]="state.sort"
+    [pageable]="true"
+    [filterable]="true"
+    [sortable]="true"
+    (dataStateChange)="dataStateChange($event)">
+    <kendo-grid-column field="M3Item" title="M3 SKU" [width]="100" filter="numeric"></kendo-grid-column>
     <kendo-grid-column field="Description" title="Description" [width]="200"></kendo-grid-column>
     <kendo-grid-column field="JarCode" title="Jar Code" [width]="100"></kendo-grid-column>
-    <kendo-grid-column field="VarietyCode" title="VarietyCode" [width]="100"></kendo-grid-column>
+    <kendo-grid-column field="VarietyCode" title="Variety Code" [width]="100"></kendo-grid-column>
     <kendo-grid-column field="Zambelli" title="Zambelli" [width]="100"></kendo-grid-column>
-    <kendo-grid-column field="Label" title="Label" [width]="50"></kendo-grid-column>
+    <kendo-grid-column field="Label" title="Label" [width]="50" filter="numeric"></kendo-grid-column>
     <kendo-grid-column field="Cap" title="Cap" [width]="50"></kendo-grid-column>
     <kendo-grid-column field="Domino" title="Domino" [width]="100"></kendo-grid-column>
-    <kendo-grid-column field="UnitsPerCase" title="Units Per Case" [width]="100"></kendo-grid-column>
-    <kendo-grid-column field="NetWeight" title="Net Weight" [width]="100"></kendo-grid-column>
-    <kendo-grid-column field="PalletQyt" title="Pallet Qyt" [width]="100"></kendo-grid-column>
-    <kendo-grid-column field="SalesDays" title="Sales Days" [width]="100"></kendo-grid-column>
-    <kendo-grid-column field="BatchOrderMultiples" title="Batch Order Multiples" [width]="100"></kendo-grid-column>
+    <kendo-grid-column field="UnitsPerCase" title="Units Per Case" [width]="100" filter="numeric"></kendo-grid-column>
+    <kendo-grid-column field="NetWeight" title="Net Weight" [width]="100" filter="numeric"></kendo-grid-column>
+    <kendo-grid-column field="PalletQyt" title="Pallet Qyt" [width]="100" filter="numeric"></kendo-grid-column>
+    <kendo-grid-column field="SalesDays" title="Sales Days" [width]="100" filter="numeric"></kendo-grid-column>
+    <kendo-grid-column field="BatchOrderMultiples" title="Batch Order Multiples" [width]="100" filter="numeric"></kendo-grid-column>
 </kendo-grid>
 </div>
