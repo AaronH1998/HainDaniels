@@ -1,7 +1,6 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
 using CsvHelper.TypeConversion;
-using System;
 
 namespace HainDanielsApi.Extensions
 {
@@ -10,7 +9,7 @@ namespace HainDanielsApi.Extensions
 
         public override object ConvertFromString(string text, IReaderRow row, MemberMapData memberMapData)
         {
-            if (String.IsNullOrWhiteSpace(text))
+            if (string.IsNullOrWhiteSpace(text))
             {
                 if (memberMapData.IsOptional)
                 {

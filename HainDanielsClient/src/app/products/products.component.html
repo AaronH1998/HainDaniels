@@ -9,7 +9,7 @@
     </label>
 </div>
 
-<kendo-grid [data]="products">
+<kendo-grid [data]="gridView" [pageSize]="pageSize" [skip]="skip" [pageable]="true" (pageChange)="pageChange($event)">
     <kendo-grid-column field="M3Item" title="M3 SKU" [width]="100"></kendo-grid-column>
     <kendo-grid-column field="Description" title="Description" [width]="200"></kendo-grid-column>
     <kendo-grid-column field="JarCode" title="Jar Code" [width]="100"></kendo-grid-column>

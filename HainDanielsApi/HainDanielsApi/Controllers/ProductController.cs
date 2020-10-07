@@ -27,7 +27,7 @@ namespace HainDanielsApi.Controllers
         [HttpGet]
         public async Task<List<Product>> GetProducts()
         {
-            return (await productRepository.GetProductsAsync()).Take(10).ToList();
+            return (await productRepository.GetProductsAsync()).ToList();
         }
 
         [HttpPost]
