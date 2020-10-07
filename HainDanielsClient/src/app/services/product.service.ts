@@ -1,10 +1,8 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, switchMap, tap } from 'rxjs/operators';
-import { NgxCsvParser } from 'ngx-csv-parser';
+import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Product } from '../product';
 import { State, toDataSourceRequestString } from '@progress/kendo-data-query';
 import { GridDataResult } from '@progress/kendo-angular-grid';
 
@@ -27,14 +25,7 @@ export class ProductService {
             total:result["Total"]
           };
           return gridReult;
-        }
-        // ({data,total}:GridDataResult):GridDataResult =>{
-        // return{
-        //   data:data,
-        //   total:total
-        // };
-      // }
-      )
+        })
       );
   }
 

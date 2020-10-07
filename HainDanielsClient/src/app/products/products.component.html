@@ -4,7 +4,7 @@
 
 <div class="mt-2 mb-2">
     <label class="btn btn-primary">
-        <input type="file" (change)="importFile($event.target.files)" style="display: none;" />
+        <input #importFileInput type="file" (change)="importFile($event.target.files)" style="display: none;" />
         Import File
     </label>
 </div>
@@ -18,6 +18,7 @@
     [pageable]="true"
     [filterable]="true"
     [sortable]="true"
+    [height]="505"
     (dataStateChange)="dataStateChange($event)">
     <kendo-grid-column field="M3Item" title="M3 SKU" [width]="100" filter="numeric"></kendo-grid-column>
     <kendo-grid-column field="Description" title="Description" [width]="200"></kendo-grid-column>
