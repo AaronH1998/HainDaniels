@@ -1,8 +1,10 @@
 ﻿using CsvHelper.Configuration;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace HainDanielsApi.Models
 {
+    [Serializable]
     public class Product
     {
         [Key]
