@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "8lijU/b100v48r65J2tCt3cfu9H8Jncz0cCMRykc2WPaIj6Y20s2SwqsWzdFpebdDoRz0U6XYDMQo3UDZlABxg==",
+  "dgSpecHash": "MTlYKVx2yCHTFlzGBdIAQ09KT+HPsTcEyw2cO4TtMKEoFC5iDYt4ds4DYmMW+SlFXyQjsl3PxCSd9hmJpyD+Dw==",
   "success": true,
   "projectFilePath": "C:\\Users\\aaron\\OneDrive\\Documents\\HainDaniels\\HainDanielsApi\\HainDanielsApi\\HainDanielsApi.csproj",
   "expectedPackageFiles": [
@@ -159,6 +159,7 @@
     "C:\\Users\\aaron\\.nuget\\packages\\microsoft.extensions.options\\2.2.0\\microsoft.extensions.options.2.2.0.nupkg.sha512",
     "C:\\Users\\aaron\\.nuget\\packages\\microsoft.extensions.options.configurationextensions\\2.2.0\\microsoft.extensions.options.configurationextensions.2.2.0.nupkg.sha512",
     "C:\\Users\\aaron\\.nuget\\packages\\microsoft.extensions.options.dataannotations\\2.2.0\\microsoft.extensions.options.dataannotations.2.2.0.nupkg.sha512",
+    "C:\\Users\\aaron\\.nuget\\packages\\microsoft.extensions.platformabstractions\\1.1.0\\microsoft.extensions.platformabstractions.1.1.0.nupkg.sha512",
     "C:\\Users\\aaron\\.nuget\\packages\\microsoft.extensions.primitives\\2.2.0\\microsoft.extensions.primitives.2.2.0.nupkg.sha512",
     "C:\\Users\\aaron\\.nuget\\packages\\microsoft.extensions.webencoders\\2.2.0\\microsoft.extensions.webencoders.2.2.0.nupkg.sha512",
     "C:\\Users\\aaron\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\5.3.0\\microsoft.identitymodel.jsonwebtokens.5.3.0.nupkg.sha512",
@@ -210,6 +211,7 @@
     "C:\\Users\\aaron\\.nuget\\packages\\system.collections.specialized\\4.3.0\\system.collections.specialized.4.3.0.nupkg.sha512",
     "C:\\Users\\aaron\\.nuget\\packages\\system.componentmodel.annotations\\4.5.0\\system.componentmodel.annotations.4.5.0.nupkg.sha512",
     "C:\\Users\\aaron\\.nuget\\packages\\system.console\\4.3.0\\system.console.4.3.0.nupkg.sha512",
+    "C:\\Users\\aaron\\.nuget\\packages\\system.data.common\\4.1.0\\system.data.common.4.1.0.nupkg.sha512",
     "C:\\Users\\aaron\\.nuget\\packages\\system.data.sqlclient\\4.6.0\\system.data.sqlclient.4.6.0.nupkg.sha512",
     "C:\\Users\\aaron\\.nuget\\packages\\system.diagnostics.contracts\\4.3.0\\system.diagnostics.contracts.4.3.0.nupkg.sha512",
     "C:\\Users\\aaron\\.nuget\\packages\\system.diagnostics.debug\\4.3.0\\system.diagnostics.debug.4.3.0.nupkg.sha512",
@@ -288,7 +290,8 @@
     "C:\\Users\\aaron\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\aaron\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
     "C:\\Users\\aaron\\.nuget\\packages\\system.xml.xpath\\4.3.0\\system.xml.xpath.4.3.0.nupkg.sha512",
-    "C:\\Users\\aaron\\.nuget\\packages\\system.xml.xpath.xdocument\\4.3.0\\system.xml.xpath.xdocument.4.3.0.nupkg.sha512"
+    "C:\\Users\\aaron\\.nuget\\packages\\system.xml.xpath.xdocument\\4.3.0\\system.xml.xpath.xdocument.4.3.0.nupkg.sha512",
+    "C:\\Users\\aaron\\.nuget\\packages\\telerik.ui.for.aspnet.core.trial\\2020.3.915\\telerik.ui.for.aspnet.core.trial.2020.3.915.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,7 +1,6 @@
 ﻿using HainDanielsApi.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace HainDanielsApi.Repositories
 {
@@ -16,12 +15,12 @@ namespace HainDanielsApi.Repositories
 
         public IQueryable<Product> Products => context.Products;
 
-        public async Task<List<Product>> GetProductsAsync()
+        public IEnumerable<Product> GetProducts()
         {
-            return await Task.FromResult(Products.ToList());
+            return Products;
         }
 
-        public void AddProductAsync(Product product)
+        public void AddProduct(Product product)
         {
             var productEntity = context.Products.FirstOrDefault(p => p.M3Item == product.M3Item);
 

@@ -3,9 +3,10 @@ using CsvHelper.TypeConversion;
 using HainDanielsApi.Extensions;
 using HainDanielsApi.Models;
 using HainDanielsApi.Repositories;
+using Kendo.Mvc.Extensions;
+using Kendo.Mvc.UI;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -13,6 +14,12 @@ using System.Threading.Tasks;
 
 namespace HainDanielsApi.Controllers
 {
+    public class ProductPagingRequest
+    {
+        public int PageSize { get; set; }
+        public int PageNumber { get; set; }
+    }
+
     [Route("api/[controller]")]
     [ApiController]
     public class ProductController : ControllerBase
@@ -25,9 +32,9 @@ namespace HainDanielsApi.Controllers
         }
 
         [HttpGet]
-        public async Task<List<Product>> GetProducts()
+        public DataSourceResult GetProducts([DataSourceRequest] DataSourceRequest dataSourceRequest)
         {
-            return (await productRepository.GetProductsAsync()).ToList();
+            return productRepository.GetProducts().ToDataSourceResult(dataSourceRequest);
         }
 
         [HttpPost]
@@ -73,7 +80,7 @@ namespace HainDanielsApi.Controllers
 
                         foreach (var product in validRecords)
                         {
-                            productRepository.AddProductAsync(product);
+                            productRepository.AddProduct(product);
                         }
                     }
                     catch (TypeConverterException ex)

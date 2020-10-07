@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { GridDataResult, PageChangeEvent } from '@progress/kendo-angular-grid';
+import { State } from '@progress/kendo-data-query';
 import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { Product } from '../product';
 import { ProductService } from '../services/product.service';
 
@@ -11,35 +14,31 @@ import { ProductService } from '../services/product.service';
 })
 export class ProductsComponent implements OnInit {
   title="Products";
-  pageSize=10;
-  skip=0;
-  gridView:GridDataResult;
-
-  private products:Product[];
+  state:State ={
+    skip:0,
+    take:10,
+    filter:{filters:[],logic:'or'},
+    sort:[]
+  };
+  products:Observable<any>;
 
   constructor(private productService:ProductService, private toastr:ToastrService) { }
 
   ngOnInit(): void {
-    this.getAllProducts();
+    this.getProducts();
   }
 
-  private getAllProducts(){
-    this.productService.getItems().subscribe(products => {
-      this.products = products;
-      this.loadProductPage();
-    });
+  private getProducts(){
+    this.productService.getItems(this.state).pipe(
+      tap(data=>{
+        this.products = data;
+      })
+    ).subscribe();
   }
 
   public pageChange(event:PageChangeEvent){
-    this.skip = event.skip;
-    this.loadProductPage();
-  }
-
-  private loadProductPage(){
-    this.gridView = {
-      data: this.products.slice(this.skip,this.skip + this.pageSize),
-      total:this.products.length
-    };
+    this.state.skip = event.skip;
+    this.getProducts();
   }
 
   public importFile(files:FileList){

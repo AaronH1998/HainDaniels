@@ -27,10 +27,10 @@ C:\Users\aaron\OneDrive\Documents\HainDaniels\HainDanielsApi\HainDanielsApi\bin\
 C:\Users\aaron\OneDrive\Documents\HainDaniels\HainDanielsApi\HainDanielsApi\obj\Debug\netcoreapp2.2\HainDanielsApi.csprojAssemblyReference.cache
 C:\Users\aaron\OneDrive\Documents\HainDaniels\HainDanielsApi\HainDanielsApi\obj\Debug\netcoreapp2.2\HainDanielsApi.AssemblyInfoInputs.cache
 C:\Users\aaron\OneDrive\Documents\HainDaniels\HainDanielsApi\HainDanielsApi\obj\Debug\netcoreapp2.2\HainDanielsApi.AssemblyInfo.cs
-C:\Users\aaron\OneDrive\Documents\HainDaniels\HainDanielsApi\HainDanielsApi\obj\Debug\netcoreapp2.2\HainDanielsApi.csproj.CoreCompileInputs.cache
 C:\Users\aaron\OneDrive\Documents\HainDaniels\HainDanielsApi\HainDanielsApi\obj\Debug\netcoreapp2.2\HainDanielsApi.RazorAssemblyInfo.cache
 C:\Users\aaron\OneDrive\Documents\HainDaniels\HainDanielsApi\HainDanielsApi\obj\Debug\netcoreapp2.2\HainDanielsApi.RazorAssemblyInfo.cs
 C:\Users\aaron\OneDrive\Documents\HainDaniels\HainDanielsApi\HainDanielsApi\obj\Debug\netcoreapp2.2\HainDanielsApi.RazorTargetAssemblyInfo.cache
 C:\Users\aaron\OneDrive\Documents\HainDaniels\HainDanielsApi\HainDanielsApi\obj\Debug\netcoreapp2.2\HainDanielsApi.dll
 C:\Users\aaron\OneDrive\Documents\HainDaniels\HainDanielsApi\HainDanielsApi\obj\Debug\netcoreapp2.2\HainDanielsApi.pdb
 C:\Users\aaron\OneDrive\Documents\HainDaniels\HainDanielsApi\HainDanielsApi\obj\Debug\netcoreapp2.2\HainDanielsApi.genruntimeconfig.cache
+C:\Users\aaron\OneDrive\Documents\HainDaniels\HainDanielsApi\HainDanielsApi\obj\Debug\netcoreapp2.2\HainDanielsApi.csproj.CoreCompileInputs.cache

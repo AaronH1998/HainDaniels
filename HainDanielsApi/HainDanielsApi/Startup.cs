@@ -25,6 +25,7 @@ namespace HainDanielsApi
                 options.UseSqlServer(Configuration["Data:HainDanielsProducts:ConnectionString"]);
 
             });
+            services.AddKendo();
             services.AddTransient<IProductRepository, EFProductRepository>();
             services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddJsonOptions(options =>
