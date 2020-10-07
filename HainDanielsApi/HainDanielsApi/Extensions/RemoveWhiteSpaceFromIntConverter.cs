@@ -12,6 +12,11 @@ namespace HainDanielsApi.Extensions
         {
             if (String.IsNullOrWhiteSpace(text))
             {
+                if (memberMapData.IsOptional)
+                {
+                    return null;
+                }
+
                 return 0;
             }
 
