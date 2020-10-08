@@ -2,14 +2,17 @@
 using CsvHelper.TypeConversion;
 using HainDanielsApi.Extensions;
 using HainDanielsApi.Models;
+using HainDanielsApi.Models.FileFormatMaps;
 using HainDanielsApi.Repositories;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace HainDanielsApi.Controllers
@@ -44,6 +47,7 @@ namespace HainDanielsApi.Controllers
             {
                 return Ok(new { success = false, message = "File must be of CSV format." });
             }
+
             if (file.Length > 0)
             {
                 var filePath = Path.GetTempFileName();
@@ -58,7 +62,7 @@ namespace HainDanielsApi.Controllers
                 {
                     csv.Configuration.TrimOptions = CsvHelper.Configuration.TrimOptions.Trim;
                     csv.Configuration.TypeConverterCache.AddConverter(typeof(int), new RemoveWhiteSpaceFromIntConverter());
-                    csv.Configuration.RegisterClassMap<ProductMap>();
+                    csv.Configuration.RegisterClassMap<ItemsInMap>();
 
                     try
                     {
@@ -87,26 +91,33 @@ namespace HainDanielsApi.Controllers
                     {
                         return Ok(new { success = false, message = "One or more fields are of the incorrect data type" });
                     }
-
                 }
             }
 
             return Ok(new { success = true, message = "File succesfully uploaded." });
         }
 
-        [HttpGet("Export")]
-        public FileStreamResult ExportFile()
+        [HttpGet("Export/{fileType}")]
+        public FileStreamResult ExportFile(string fileType)
         {
+            var mapType = Type.GetType($"HainDanielsApi.Models.FileFormatMaps.{fileType}Map", true, true);
+
             var records = productRepository.GetProducts();
+
+            MemoryStream ms;
             using (var stream = new MemoryStream())
-            using (var writer = new StreamWriter(stream))
+            using (var writer = new StreamWriter(stream, Encoding.UTF8))
             using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
             {
+                csv.Configuration.RegisterClassMap(mapType);
                 csv.WriteRecords(records);
+                writer.Flush();
+                var result = stream.ToArray();
 
-                return File(stream, "text/csv");
-
+                ms = new MemoryStream(result);
             }
+
+            return File(ms, "text/csv");
 
         }
     }

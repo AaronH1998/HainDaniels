@@ -1,4 +1,5 @@
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-export',
@@ -12,7 +13,7 @@ export class ExportComponent implements OnInit {
     {name:'Units of Conversion', value:'unitsOfConversion', checked:false},
     {name:'Items in', value:'itemsIn', checked:false}
   ]
-  constructor() { }
+  constructor(private productService:ProductService) { }
 
   ngOnInit(): void {
   }
@@ -23,5 +24,15 @@ export class ExportComponent implements OnInit {
 
   exportFiles(){
     let selectedTypes = this.fileTypes.filter(type=>type.checked).map(type=>type.value);
+    selectedTypes.forEach(type => {
+      this.productService.exportFile(type).subscribe((data)=>{
+        
+        let downloadUrl = window.URL.createObjectURL(data);
+        let link = document.createElement('a');
+        link.href = downloadUrl;
+        link.download = `${type}.csv`;
+        link.click();
+      });
+    });
   }
 }

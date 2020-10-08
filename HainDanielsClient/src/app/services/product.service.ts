@@ -30,11 +30,14 @@ export class ProductService {
   }
 
   importFile(fileToImport:File):Observable<Response>{
-    
-
     const formData:FormData = new FormData();
     formData.append('itemsIn',fileToImport,fileToImport.name);
 
     return this.httpClient.post<Response>(this.apiUrl,formData);
+  }
+  
+  exportFile(type:string): Observable<Blob>{
+
+    return this.httpClient.get(`${this.apiUrl}/Export/${type}`,{responseType:'blob'});
   }
 }
