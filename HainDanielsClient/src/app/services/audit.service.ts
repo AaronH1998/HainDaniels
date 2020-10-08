@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuditService {
-  private apiUrl =  environment.apiUrl + '/api/Product';
+  private apiUrl =  environment.apiUrl + '/api/Audit';
 
   constructor(private httpClient:HttpClient) { }
 
