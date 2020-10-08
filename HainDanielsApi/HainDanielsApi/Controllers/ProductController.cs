@@ -28,13 +28,19 @@ namespace HainDanielsApi.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        public IApplicationRepository<Product> productRepository;
+        public IProductRepository productRepository;
         public IApplicationRepository<AuditRecord> auditRepository;
 
-        public ProductController(IApplicationRepository<Product> productRepository, IApplicationRepository<AuditRecord> auditRepository)
+        public ProductController(IProductRepository productRepository, IApplicationRepository<AuditRecord> auditRepository)
         {
             this.productRepository = productRepository;
             this.auditRepository = auditRepository;
+        }
+
+        [HttpGet("{id}")]
+        public Product GetProduct(int id)
+        {
+            return productRepository.GetProduct(id);
         }
 
         [HttpGet]

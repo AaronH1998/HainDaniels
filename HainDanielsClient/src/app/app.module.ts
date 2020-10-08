@@ -12,6 +12,7 @@ import { ProductsComponent } from './products/products.component';
 import { NavigationLinksComponent } from './navigation-links/navigation-links.component';
 import { ExportComponent } from './export/export.component';
 import { AuditComponent } from './audit/audit.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AuditComponent } from './audit/audit.component';
     ProductsComponent,
     NavigationLinksComponent,
     ExportComponent,
-    AuditComponent
+    AuditComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,

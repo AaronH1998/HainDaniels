@@ -4,13 +4,18 @@ using System.Linq;
 
 namespace HainDanielsApi.Repositories
 {
-    public class EFProductRepository : IApplicationRepository<Product>
+    public class EFProductRepository : IApplicationRepository<Product>, IProductRepository
     {
         private ApplicationDbContext context;
 
         public EFProductRepository(ApplicationDbContext ctx)
         {
             context = ctx;
+        }
+
+        public Product GetProduct(int id)
+        {
+            return context.Products.SingleOrDefault(p => p.ID == id);
         }
 
         public IEnumerable<Product> GetItems()

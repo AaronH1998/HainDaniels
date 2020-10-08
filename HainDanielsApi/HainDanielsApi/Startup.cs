@@ -30,6 +30,7 @@ namespace HainDanielsApi
 
             services.AddTransient<IApplicationRepository<Product>, EFProductRepository>();
             services.AddTransient<IApplicationRepository<AuditRecord>, EFAuditRepository>();
+            services.AddTransient<IProductRepository, EFProductRepository>();
 
             services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddJsonOptions(options =>
