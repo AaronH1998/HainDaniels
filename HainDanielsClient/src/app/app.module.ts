@@ -11,13 +11,15 @@ import { GridModule } from '@progress/kendo-angular-grid';
 import { ProductsComponent } from './products/products.component';
 import { NavigationLinksComponent } from './navigation-links/navigation-links.component';
 import { ExportComponent } from './export/export.component';
+import { AuditComponent } from './audit/audit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductsComponent,
     NavigationLinksComponent,
-    ExportComponent
+    ExportComponent,
+    AuditComponent
   ],
   imports: [
     BrowserModule,

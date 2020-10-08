@@ -1,21 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { State, toDataSourceRequestString } from '@progress/kendo-data-query';
 import { GridDataResult } from '@progress/kendo-angular-grid';
+import { State, toDataSourceRequestString } from '@progress/kendo-data-query';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-
-export class ProductService {
+export class AuditService {
   private apiUrl =  environment.apiUrl + '/api/Product';
 
   constructor(private httpClient:HttpClient) { }
 
-  getItems(state:State): Observable<any>{
+  getAudit(state:State):Observable<any>{
     const queryStr = `${toDataSourceRequestString(state)}`
 
     return this.httpClient.get(`${this.apiUrl}?${queryStr}`).pipe(
@@ -30,14 +29,4 @@ export class ProductService {
       );
   }
 
-  importFile(fileToImport:File):Observable<Response>{
-    const formData:FormData = new FormData();
-    formData.append('itemsIn',fileToImport,fileToImport.name);
-
-    return this.httpClient.post<Response>(this.apiUrl,formData);
-  }
-  
-  exportFile(type:string): Observable<Blob>{
-    return this.httpClient.get(`${this.apiUrl}/Export/${type}`,{responseType:'blob'});
-  }
 }

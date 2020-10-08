@@ -1,0 +1,18 @@
+<h2>{{title}}</h2>
+
+<kendo-grid 
+    [data]="audit" 
+    [skip]="state.skip"
+    [pageSize]="state.take"
+    [filter]="state.filter"
+    [sort]="state.sort"
+    [pageable]="true"
+    [filterable]="true"
+    [sortable]="true"
+    [height]="505"
+    (dataStateChange)="dataStateChange($event)">
+    <kendo-grid-column field="EventDateTime" title="Date / Time" [width]="150" filter="date" format="{0:dd/MM/yyyy HH:mm}"></kendo-grid-column>
+    <kendo-grid-column field="User" title="User" [width]="100"></kendo-grid-column>
+    <kendo-grid-column field="Event" title="Import / Export" [width]="100"></kendo-grid-column>
+    <kendo-grid-column field="Description" title="Description" [width]="200"></kendo-grid-column>
+</kendo-grid>
