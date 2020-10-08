@@ -93,5 +93,21 @@ namespace HainDanielsApi.Controllers
 
             return Ok(new { success = true, message = "File succesfully uploaded." });
         }
+
+        [HttpGet("Export")]
+        public FileStreamResult ExportFile()
+        {
+            var records = productRepository.GetProducts();
+            using (var stream = new MemoryStream())
+            using (var writer = new StreamWriter(stream))
+            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                csv.WriteRecords(records);
+
+                return File(stream, "text/csv");
+
+            }
+
+        }
     }
 }

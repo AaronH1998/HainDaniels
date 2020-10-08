@@ -1,8 +1,7 @@
-<app-navigation-links></app-navigation-links>
-<div class="ml-5 mr-5">
 <h2>{{title}}</h2>
 
 <div class="mt-2 mb-2">
+
     <label class="btn btn-primary">
         <input #importFileInput type="file" (change)="importFile($event.target.files)" style="display: none;" />
         Import File
@@ -34,4 +33,3 @@
     <kendo-grid-column field="SalesDays" title="Sales Days" [width]="100" filter="numeric"></kendo-grid-column>
     <kendo-grid-column field="BatchOrderMultiples" title="Batch Order Multiples" [width]="100" filter="numeric"></kendo-grid-column>
 </kendo-grid>
-</div>

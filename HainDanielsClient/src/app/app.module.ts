@@ -10,12 +10,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { ProductsComponent } from './products/products.component';
 import { NavigationLinksComponent } from './navigation-links/navigation-links.component';
+import { ExportComponent } from './export/export.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductsComponent,
-    NavigationLinksComponent
+    NavigationLinksComponent,
+    ExportComponent
   ],
   imports: [
     BrowserModule,
