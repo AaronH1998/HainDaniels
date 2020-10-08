@@ -29,7 +29,7 @@ export class ProductsComponent implements OnInit {
   }
 
   private getProducts(){
-    this.productService.getItems(this.state).pipe(
+    this.productService.getProducts(this.state).pipe(
       tap(data=>{
         this.products = data;
       })

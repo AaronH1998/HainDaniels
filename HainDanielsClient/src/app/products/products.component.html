@@ -32,4 +32,9 @@
     <kendo-grid-column field="PalletQyt" title="Pallet Qyt" [width]="100" filter="numeric"></kendo-grid-column>
     <kendo-grid-column field="SalesDays" title="Sales Days" [width]="100" filter="numeric"></kendo-grid-column>
     <kendo-grid-column field="BatchOrderMultiples" title="Batch Order Multiples" [width]="100" filter="numeric"></kendo-grid-column>
+    <kendo-grid-column title="Actions" [width]="100">
+        <ng-template kendoGridCellTemplate let-dataItem>
+            <a routerLink="{{dataItem.ID}}">Edit</a>
+        </ng-template>
+    </kendo-grid-column>
 </kendo-grid>

@@ -13,6 +13,7 @@ import { NavigationLinksComponent } from './navigation-links/navigation-links.co
 import { ExportComponent } from './export/export.component';
 import { AuditComponent } from './audit/audit.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductDetailsFieldComponent } from './product-details-field/product-details-field.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     NavigationLinksComponent,
     ExportComponent,
     AuditComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    ProductDetailsFieldComponent
   ],
   imports: [
     BrowserModule,

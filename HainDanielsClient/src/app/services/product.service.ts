@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { State, toDataSourceRequestString } from '@progress/kendo-data-query';
 import { GridDataResult } from '@progress/kendo-angular-grid';
+import { Product } from '../product';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,11 @@ export class ProductService {
 
   constructor(private httpClient:HttpClient) { }
 
-  getItems(state:State): Observable<any>{
+  getProduct(productId:number):Observable<Product>{
+    return this.httpClient.get<Product>(`${this.apiUrl}/${productId}`);
+  }
+
+  getProducts(state:State): Observable<any>{
     const queryStr = `${toDataSourceRequestString(state)}`
 
     return this.httpClient.get(`${this.apiUrl}?${queryStr}`).pipe(
