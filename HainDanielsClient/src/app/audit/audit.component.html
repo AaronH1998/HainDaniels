@@ -11,7 +11,11 @@
     [sortable]="true"
     [height]="505"
     (dataStateChange)="dataStateChange($event)">
-    <kendo-grid-column field="EventDateTime" title="Date / Time" [width]="150" filter="date" format="{0:dd/MM/yyyy HH:mm}"></kendo-grid-column>
+    <kendo-grid-column field="RecordDateTime" title="Date / Time" [width]="150" filter="date" format="{0:dd/MM/yyyy HH:mm}">
+        <ng-template kendoGridCellTemplate let-dataItem>
+            {{moment.utc(dataItem.RecordDateTime).local().format('ll LT')}}
+        </ng-template>
+    </kendo-grid-column>
     <kendo-grid-column field="User" title="User" [width]="100"></kendo-grid-column>
     <kendo-grid-column field="Event" title="Import / Export" [width]="100"></kendo-grid-column>
     <kendo-grid-column field="Description" title="Description" [width]="200"></kendo-grid-column>

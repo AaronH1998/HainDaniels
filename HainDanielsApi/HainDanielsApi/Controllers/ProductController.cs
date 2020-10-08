@@ -9,6 +9,7 @@ using Kendo.Mvc.UI;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -27,17 +28,19 @@ namespace HainDanielsApi.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        public IProductRepository productRepository;
+        public IApplicationRepository<Product> productRepository;
+        public IApplicationRepository<AuditRecord> auditRepository;
 
-        public ProductController(IProductRepository productRepository)
+        public ProductController(IApplicationRepository<Product> productRepository, IApplicationRepository<AuditRecord> auditRepository)
         {
             this.productRepository = productRepository;
+            this.auditRepository = auditRepository;
         }
 
         [HttpGet]
         public DataSourceResult GetProducts([DataSourceRequest] DataSourceRequest dataSourceRequest)
         {
-            return productRepository.GetProducts().ToDataSourceResult(dataSourceRequest);
+            return productRepository.GetItems().ToDataSourceResult(dataSourceRequest);
         }
 
         [HttpPost]
@@ -84,11 +87,21 @@ namespace HainDanielsApi.Controllers
 
                         foreach (var product in validRecords)
                         {
-                            productRepository.AddProduct(product);
+                            productRepository.AddItem(product);
                         }
+
+                        var auditRecord = new AuditRecord()
+                        {
+                            Description = $"Imported {file.Name} file. {validRecords.Length} products",
+                            Event = "Import",
+                            RecordDateTime = DateTime.UtcNow
+                        };
+
+                        auditRepository.AddItem(auditRecord);
                     }
                     catch (TypeConverterException ex)
                     {
+                        Debug.WriteLine(ex);
                         return Ok(new { success = false, message = "One or more fields are of the incorrect data type" });
                     }
                 }
@@ -102,7 +115,7 @@ namespace HainDanielsApi.Controllers
         {
             var mapType = Type.GetType($"HainDanielsApi.Models.FileFormatMaps.{fileType}Map", true, true);
 
-            var records = productRepository.GetProducts();
+            var records = productRepository.GetItems();
 
             MemoryStream ms;
             using (var stream = new MemoryStream())
@@ -116,6 +129,15 @@ namespace HainDanielsApi.Controllers
 
                 ms = new MemoryStream(result);
             }
+
+            var auditRecord = new AuditRecord()
+            {
+                Description = $"Exported {fileType} file. {records.ToArray().Length} products",
+                Event = "Export",
+                RecordDateTime = DateTime.UtcNow
+            };
+
+            auditRepository.AddItem(auditRecord);
 
             return File(ms, "text/csv");
 

@@ -4,6 +4,7 @@ import { State } from '@progress/kendo-data-query';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { AuditService } from '../services/audit.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-audit',
@@ -19,6 +20,7 @@ export class AuditComponent implements OnInit {
     sort:[]
   };
   audit:Observable<any>;
+  moment: any = moment;
 
   constructor(private auditService:AuditService) { }
 

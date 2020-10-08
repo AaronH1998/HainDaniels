@@ -5,6 +5,7 @@ import { State, toDataSourceRequestString } from '@progress/kendo-data-query';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { AuditRecord } from '../auditRecord';
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +29,4 @@ export class AuditService {
         })
       );
   }
-
 }

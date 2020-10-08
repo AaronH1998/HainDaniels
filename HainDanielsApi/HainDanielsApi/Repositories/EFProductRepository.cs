@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace HainDanielsApi.Repositories
 {
-    public class EFProductRepository : IProductRepository
+    public class EFProductRepository : IApplicationRepository<Product>
     {
         private ApplicationDbContext context;
 
@@ -13,14 +13,12 @@ namespace HainDanielsApi.Repositories
             context = ctx;
         }
 
-        public IQueryable<Product> Products => context.Products;
-
-        public IEnumerable<Product> GetProducts()
+        public IEnumerable<Product> GetItems()
         {
-            return Products;
+            return context.Products;
         }
 
-        public void AddProduct(Product product)
+        public void AddItem(Product product)
         {
             var productEntity = context.Products.FirstOrDefault(p => p.M3Item == product.M3Item);
 
