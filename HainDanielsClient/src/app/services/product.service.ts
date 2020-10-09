@@ -17,11 +17,7 @@ export class ProductService {
   constructor(private httpClient:HttpClient) { }
 
   saveProduct(product:Product):Observable<Response>{
-    try{
       return this.httpClient.put<Response>(this.apiUrl,product);
-    }catch{
-      return;
-    }
   }
 
   getProduct(productId:number):Observable<Product>{
