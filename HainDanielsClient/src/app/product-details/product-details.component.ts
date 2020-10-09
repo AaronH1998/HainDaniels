@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Product } from '../product';
 import { ProductDetailsFieldComponent } from '../product-details-field/product-details-field.component';
 import { ProductService } from '../services/product.service';
@@ -18,7 +19,7 @@ export class ProductDetailsComponent implements OnInit {
   @ViewChildren(ProductDetailsFieldComponent) fieldComponents;
   mode:string = "view";
 
-  constructor(private productService:ProductService, private route:ActivatedRoute, private location:Location) { }
+  constructor(private productService:ProductService, private route:ActivatedRoute, private location:Location, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     let productId = this.route.snapshot.paramMap.get("productId");
@@ -47,5 +48,17 @@ export class ProductDetailsComponent implements OnInit {
       child.input.nativeElement.readOnly = true;
     });
     this.mode = "view";
+  }
+
+  saveProduct(){
+    this.productService.saveProduct(this.product).subscribe((response)=>{
+      if(response==null){
+        this.toastr.error("Product failed to save due to invalid data");
+      }else if(response["success"]== false){
+        this.toastr.error(response["message"]);
+      }else{
+        this.toastr.success(response["message"]);
+      }
+    });
   }
 }

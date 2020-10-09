@@ -1,4 +1,5 @@
-<h2>
+<div stlye="width:100%">
+<h2 style="float:left;">
     <a (click)="goBack()" class="k-icon k-i-arrow-left"></a>  
     {{title}} {{product.M3Item}} 
     <a>
@@ -8,63 +9,67 @@
 
 </h2>
 
+<button (click)="saveProduct()" *ngIf="mode=='edit'" class="btn btn-primary" style="float:right">Save Changes</button>
+</div>
+
+<div style="clear:both"></div>
+
 <form>
     <div class="form-horizontal">
         <div style="border: 1px solid black; padding: 10px; margin-bottom: 10px;">
             <div class="form-group row">
-                <app-product-details-field class="col-sm-5 input-group" [name]="'M3 SKU'" [field]="product.M3Item"></app-product-details-field>
+                <app-product-details-field class="col-sm-5 input-group" [name]="'M3 SKU'" [(field)]="product.M3Item" [type]="'number'"></app-product-details-field>
 
                 <div class="col-sm-2"></div>
 
-                <app-product-details-field class="col-sm-5 input-group" [name]="'Description'" [field]="product.Description"></app-product-details-field>
+                <app-product-details-field class="col-sm-5 input-group" [name]="'Description'" [(field)]="product.Description"></app-product-details-field>
             </div>
         </div>
 
         <div style="border: 1px solid black; padding: 10px;">
             <div class="form-group row">
-                <app-product-details-field class="col-sm-5 input-group" [name]="'Jar Code'" [field]="product.JarCode"></app-product-details-field>
+                <app-product-details-field class="col-sm-5 input-group" [name]="'Jar Code'" [(field)]="product.JarCode"></app-product-details-field>
                 
                 <div class="col-sm-2"></div>
 
-                <app-product-details-field class="col-sm-5 input-group" [name]="'Units Per Case'" [field]="product.UnitsPerCase"></app-product-details-field>
+                <app-product-details-field class="col-sm-5 input-group" [name]="'Units Per Case'" [(field)]="product.UnitsPerCase" [type]="'number'"></app-product-details-field>
             </div>
 
             <div class="form-group row">
-                <app-product-details-field class="col-sm-5 input-group" [name]="'Variety Code'" [field]="product.VarietyCode"></app-product-details-field>
+                <app-product-details-field class="col-sm-5 input-group" [name]="'Variety Code'" [(field)]="product.VarietyCode"></app-product-details-field>
                 
                 <div class="col-sm-2"></div>
 
-                <app-product-details-field class="col-sm-5 input-group" [name]="'Net Weight'" [field]="product.NetWeight"></app-product-details-field>
+                <app-product-details-field class="col-sm-5 input-group" [name]="'Net Weight'" [(field)]="product.NetWeight" [type]="'number'"></app-product-details-field>
             </div>
 
             <div class="form-group row">
-                <app-product-details-field class="col-sm-5 input-group" [name]="'Zambelli'" [field]="product.Zambelli"></app-product-details-field>
+                <app-product-details-field class="col-sm-5 input-group" [name]="'Zambelli'" [(field)]="product.Zambelli"></app-product-details-field>
                 
                 <div class="col-sm-2"></div>
 
-                <app-product-details-field class="col-sm-5 input-group" [name]="'Pallet Quantity'" [field]="product.PalletQyt"></app-product-details-field>
+                <app-product-details-field class="col-sm-5 input-group" [name]="'Pallet Quantity'" [(field)]="product.PalletQyt" [type]="'number'"></app-product-details-field>
             </div>
 
             <div class="form-group row">
-                <app-product-details-field class="col-sm-5 input-group" [name]="'Label'" [field]="product.Label"></app-product-details-field>
+                <app-product-details-field class="col-sm-5 input-group" [name]="'Label'" [(field)]="product.Label" [type]="'number'"></app-product-details-field>
                 
                 <div class="col-sm-2"></div>
 
-                <app-product-details-field class="col-sm-5 input-group" [name]="'Sales Days'" [field]="product.SalesDays"></app-product-details-field>
+                <app-product-details-field class="col-sm-5 input-group" [name]="'Sales Days'" [(field)]="product.SalesDays" [type]="'number'"></app-product-details-field>
             </div>
 
             <div class="form-group row">
-                <app-product-details-field class="col-sm-5 input-group" [name]="'Cap'" [field]="product.Cap"></app-product-details-field>
+                <app-product-details-field class="col-sm-5 input-group" [name]="'Cap'" [(field)]="product.Cap"></app-product-details-field>
                 
                 <div class="col-sm-2"></div>
 
-                <app-product-details-field class="col-sm-5 input-group" [name]="'Batch Order Multiples'" [field]="product.BatchOrderMultiples"></app-product-details-field>
+                <app-product-details-field class="col-sm-5 input-group" [name]="'Batch Order Multiples'" [(field)]="product.BatchOrderMultiples" [type]="'number'"></app-product-details-field>
             </div>
 
             <div class="form-group row">
-                <app-product-details-field class="col-sm-5 input-group" [name]="'Domino'" [field]="product.Domino"></app-product-details-field>
+                <app-product-details-field class="col-sm-5 input-group" [name]="'Domino'" [(field)]="product.Domino"></app-product-details-field>
             </div>
-
         </div>
     </div>
 </form>

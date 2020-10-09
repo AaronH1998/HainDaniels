@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild, ViewChildren } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild, ViewChildren } from '@angular/core';
 
 @Component({
   selector: 'app-product-details-field',
@@ -8,6 +8,8 @@ import { Component, Input, OnInit, ViewChild, ViewChildren } from '@angular/core
 export class ProductDetailsFieldComponent implements OnInit {
   @Input() field:string;
   @Input() name:string;
+  @Input() type:string ;
+  @Output() fieldChange = new EventEmitter<any>();
   @ViewChild('input') input;
   constructor() { }
 

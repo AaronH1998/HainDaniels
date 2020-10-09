@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import{NgxCsvParserModule} from 'ngx-csv-parser';
 import{BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import{ToastrModule} from 'ngx-toastr';
+import{FormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,6 +33,7 @@ import { ProductDetailsFieldComponent } from './product-details-field/product-de
     GridModule,
     NgxCsvParserModule,
     BrowserAnimationsModule,
+    FormsModule,
     ToastrModule.forRoot({
       timeOut:10000
     })
