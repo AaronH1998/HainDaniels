@@ -1,11 +1,22 @@
 <h2>{{title}}</h2>
 
-<div class="mt-2 mb-2">
+<div class="mt-2 mb-2" style="width:100%;">
+    <div style="float:left;">
+        <label class="btn btn-primary">
+            <input #importFileInput type="file" (change)="importFile($event.target.files)" style="display: none;" />
+            Import File
+        </label>
+    </div>  
 
-    <label class="btn btn-primary">
-        <input #importFileInput type="file" (change)="importFile($event.target.files)" style="display: none;" />
-        Import File
-    </label>
+    <div style="float:right" class="dropdown-div">
+        <button class="dropdown-btn btn btn-primary">Column Settings</button>
+        <div class="dropdown-list">
+            <label [for]="column.title" class="dropdown-item" *ngFor="let column of kendoConfig">
+                <input [id]="column.title" type="checkbox" [checked]="!column.hidden" (change)="changeColumnVisibility($event,column.title)">
+                 <span>{{column.title}}</span>
+            </label>
+        </div>
+    </div>
 </div>
 
 <kendo-grid 
@@ -19,22 +30,9 @@
     [sortable]="true"
     [height]="505"
     (dataStateChange)="dataStateChange($event)">
-    <kendo-grid-column field="M3Item" title="M3 SKU" [width]="100" filter="numeric"></kendo-grid-column>
-    <kendo-grid-column field="Description" title="Description" [width]="200"></kendo-grid-column>
-    <kendo-grid-column field="JarCode" title="Jar Code" [width]="100"></kendo-grid-column>
-    <kendo-grid-column field="VarietyCode" title="Variety Code" [width]="100"></kendo-grid-column>
-    <kendo-grid-column field="Zambelli" title="Zambelli" [width]="100"></kendo-grid-column>
-    <kendo-grid-column field="Label" title="Label" [width]="50" filter="numeric"></kendo-grid-column>
-    <kendo-grid-column field="Cap" title="Cap" [width]="50"></kendo-grid-column>
-    <kendo-grid-column field="Domino" title="Domino" [width]="100"></kendo-grid-column>
-    <kendo-grid-column field="UnitsPerCase" title="Units Per Case" [width]="100" filter="numeric"></kendo-grid-column>
-    <kendo-grid-column field="NetWeight" title="Net Weight" [width]="100" filter="numeric"></kendo-grid-column>
-    <kendo-grid-column field="PalletQyt" title="Pallet Qyt" [width]="100" filter="numeric"></kendo-grid-column>
-    <kendo-grid-column field="SalesDays" title="Sales Days" [width]="100" filter="numeric"></kendo-grid-column>
-    <kendo-grid-column field="BatchOrderMultiples" title="Batch Order Multiples" [width]="100" filter="numeric"></kendo-grid-column>
-    <kendo-grid-column title="Actions" [width]="100">
-        <ng-template kendoGridCellTemplate let-dataItem>
-            <a routerLink="{{dataItem.ID}}">View</a>
+    <kendo-grid-column *ngFor="let column of kendoConfig" [field]="column.field" [title]="column.title" [width]="column.width" [filter]="column.filter" [hidden]="column.hidden">
+        <ng-template *ngIf="column.title == 'Actions'" kendoGridCellTemplate let-dataItem>
+            <a routerLink="{{dataItem.ID}}"><i class="k-icon k-i-eye"></i></a>
         </ng-template>
     </kendo-grid-column>
 </kendo-grid>

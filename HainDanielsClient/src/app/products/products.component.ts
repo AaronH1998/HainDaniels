@@ -4,6 +4,7 @@ import { State } from '@progress/kendo-data-query';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { KendoConfig } from '../product-grid-config';
 import { ProductService } from '../services/product.service';
 
 @Component({
@@ -21,11 +22,32 @@ export class ProductsComponent implements OnInit {
     sort:[]
   };
   products:Observable<any>;
+  kendoConfig :KendoConfig[] = [
+    {field:"M3Item",title:"M3 SKU",width:"100",filter:"numeric"},
+    {field:"Description",title:"Description",width:"200"},
+    {field:"JarCode",title:"Jar Code",width:"100"},
+    {field:"VarietyCode",title:"Variety Code",width:"100"},
+    {field:"Zambelli",title:"Zambelli",width:"100"},
+    {field:"Label",title:"Label",width:"50",filter:"numeric"},
+    {field:"Cap",title:"Cap",width:"50"},
+    {field:"Domino",title:"Domino",width:"100"},
+    {field:"UnitsPerCase",title:"Units Per Case",width:"100",filter:"numeric"},
+    {field:"NetWeight",title:"Net Weight",width:"100",filter:"numeric"},
+    {field:"PalletQyt",title:"Pallet Qyt",width:"100",filter:"numeric"},
+    {field:"SalesDays",title:"Sales Days",width:"100",filter:"numeric"},
+    {field:"BatchOrderMultiples",title:"Batch Order Multiples",width:"100",filter:"numeric"},
+    {title:"Actions",width:"100"}
+  ]
 
   constructor(private productService:ProductService, private toastr:ToastrService) { }
 
   ngOnInit(): void {
     this.getProducts();
+  }
+
+  changeColumnVisibility(event,title){
+    var column = this.kendoConfig.find(p => p.title == title);
+    column.hidden = !event.target.checked;
   }
 
   private getProducts(){
@@ -64,6 +86,7 @@ export class ProductsComponent implements OnInit {
       this.toastr.clear();
       if(result["success"]){
         this.toastr.success(result["message"]);
+        this.getProducts();
       }else{
         this.toastr.error(result["message"]);
       }
