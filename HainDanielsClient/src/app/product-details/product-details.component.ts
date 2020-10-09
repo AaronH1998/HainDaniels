@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from '../product';
 import { ProductDetailsFieldComponent } from '../product-details-field/product-details-field.component';
@@ -19,7 +19,7 @@ export class ProductDetailsComponent implements OnInit {
   @ViewChildren(ProductDetailsFieldComponent) fieldComponents;
   mode:string = "view";
 
-  constructor(private productService:ProductService, private route:ActivatedRoute, private location:Location, private toastr: ToastrService) { }
+  constructor(private productService:ProductService, private route:ActivatedRoute, private router:Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     let productId = this.route.snapshot.paramMap.get("productId");
@@ -33,7 +33,7 @@ export class ProductDetailsComponent implements OnInit {
   }
   
   goBack(){
-    this.location.back();
+    this.router.navigate(['/products']);
   }
 
   enableEditing(){

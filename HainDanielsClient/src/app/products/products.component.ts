@@ -23,19 +23,19 @@ export class ProductsComponent implements OnInit {
   };
   products:Observable<any>;
   kendoConfig :KendoConfig[] = [
-    {field:"M3Item",title:"M3 SKU",width:"100",filter:"numeric"},
+    {field:"M3Item",title:"M3 SKU",width:"150",filter:"numeric"},
     {field:"Description",title:"Description",width:"200"},
-    {field:"JarCode",title:"Jar Code",width:"100"},
-    {field:"VarietyCode",title:"Variety Code",width:"100"},
-    {field:"Zambelli",title:"Zambelli",width:"100"},
-    {field:"Label",title:"Label",width:"50",filter:"numeric"},
-    {field:"Cap",title:"Cap",width:"50"},
-    {field:"Domino",title:"Domino",width:"100"},
-    {field:"UnitsPerCase",title:"Units Per Case",width:"100",filter:"numeric"},
-    {field:"NetWeight",title:"Net Weight",width:"100",filter:"numeric"},
-    {field:"PalletQyt",title:"Pallet Qyt",width:"100",filter:"numeric"},
-    {field:"SalesDays",title:"Sales Days",width:"100",filter:"numeric"},
-    {field:"BatchOrderMultiples",title:"Batch Order Multiples",width:"100",filter:"numeric"},
+    {field:"JarCode",title:"Jar Code",width:"150", hidden:true},
+    {field:"VarietyCode",title:"Variety Code",width:"150", hidden:true},
+    {field:"Zambelli",title:"Zambelli",width:"150", hidden:true},
+    {field:"Label",title:"Label",width:"150",filter:"numeric", hidden:true},
+    {field:"Cap",title:"Cap",width:"150", hidden:true},
+    {field:"Domino",title:"Domino",width:"150", hidden:true},
+    {field:"UnitsPerCase",title:"Units Per Case",width:"150",filter:"numeric"},
+    {field:"NetWeight",title:"Net Weight",width:"150",filter:"numeric"},
+    {field:"PalletQyt",title:"Pallet Qyt",width:"150",filter:"numeric", hidden:true},
+    {field:"SalesDays",title:"Sales Days",width:"150",filter:"numeric", hidden:true},
+    {field:"BatchOrderMultiples",title:"Batch Order Multiples",width:"150",filter:"numeric", hidden:true},
     {title:"Actions",width:"100"}
   ]
 
