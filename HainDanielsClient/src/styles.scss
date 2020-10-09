@@ -8,3 +8,105 @@ html,body{
 i{
     color:#007bff
 }
+
+// Default theme name. This should be a complete map
+// in the $themes array, as any other themes will fallback to this.
+$default-theme-name: "default";
+
+// theme map
+$themes: (
+  default: (
+    backgroundColor: #ffffff,
+    textColor: #000000,
+  ),
+);
+
+// Put a new theme into the theme map
+@function register-theme($theme, $name) {
+  // Create a new KVP
+  $new: (
+    $name: $theme,
+  );
+  // Merge KVP into existing map
+  $themes: map-merge($themes, $new);
+  @return $themes;
+}
+
+@mixin themify() {
+  @each $theme, $map in $themes {
+    // Create the theme class prefix
+    // Expected css = '.theme-name .class'
+    .theme-#{$theme} & {
+      $active-theme: $map !global;
+      @content;
+      $active-theme: null !global;
+    }
+  }
+}
+
+// Gets a single themed variable. Must be called within a @include themify() block
+@function themed($key) {
+  // Get the value from the active theme map
+  $value: map-get($active-theme, $key);
+
+  // Otherwise fallback to the default theme
+  @if ($value == null) {
+    $value: map-get(map-get($themes, $default-theme-name), $key);
+  }
+
+  // If $key not in active theme or default, will return null
+  // and css property will be excluded.
+  @return $value;
+}
+
+// Application Styles
+
+// Register our light theme
+$themes: register-theme(
+  (
+    backgroundColor: #ffffff,
+    textColor: #408bbd,
+  ),
+  "light"
+);
+
+// Register our dark theme
+$themes: register-theme(
+  (
+    backgroundColor: #222222,
+    textColor: #dddddd,
+  ),
+  "dark"
+);
+
+.app-container {
+  display: block;
+
+  // create themed prefixes
+  @include themify() {
+    color: themed("textColor");
+    background-color: themed("backgroundColor");
+  }
+}
+
+.button {
+  @include themify() {
+    border: themed("buttonBorder");
+    color: themed("textColor");
+    border-color: themed("buttonTextColor");
+    background-color: themed("buttonColor");
+    text-transform: themed("buttonTextTransform");
+  }
+
+  &:hover {
+    @include themify() {
+      color: themed("textColor");
+      border-color: themed("buttonTextHoverColor");
+      background-color: themed("buttonHoverColor");
+    }
+  }
+}
+
+.my-new-class {
+  display: inline;
+}

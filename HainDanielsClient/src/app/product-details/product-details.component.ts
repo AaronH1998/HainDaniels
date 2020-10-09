@@ -52,7 +52,7 @@ export class ProductDetailsComponent implements OnInit {
 
   saveProduct(){
     this.productService.saveProduct(this.product).subscribe((response)=>{
-      if(response==null){
+      if(!response){
         this.toastr.error("Product failed to save due to invalid data");
       }else if(response["success"]== false){
         this.toastr.error(response["message"]);
