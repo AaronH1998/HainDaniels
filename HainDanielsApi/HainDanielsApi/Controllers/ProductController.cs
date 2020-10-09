@@ -49,6 +49,16 @@ namespace HainDanielsApi.Controllers
             return productRepository.GetItems().ToDataSourceResult(dataSourceRequest);
         }
 
+        public IActionResult EditProduct(Product product)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Ok(new { success = false, message = "Product failed to save due to invalid data" });
+            }
+            productRepository.SaveItem(product);
+            return Ok(new { success = true, message = "Product saved successfully." });
+        }
+
         [HttpPost]
         public async Task<IActionResult> ImportProductFiles([FromForm(Name = "itemsIn")] IFormFile file)
         {
@@ -93,7 +103,7 @@ namespace HainDanielsApi.Controllers
 
                         foreach (var product in validRecords)
                         {
-                            productRepository.AddItem(product);
+                            productRepository.SaveItem(product);
                         }
 
                         var auditRecord = new AuditRecord()
@@ -103,7 +113,7 @@ namespace HainDanielsApi.Controllers
                             RecordDateTime = DateTime.UtcNow
                         };
 
-                        auditRepository.AddItem(auditRecord);
+                        auditRepository.SaveItem(auditRecord);
                     }
                     catch (TypeConverterException ex)
                     {
@@ -143,7 +153,7 @@ namespace HainDanielsApi.Controllers
                 RecordDateTime = DateTime.UtcNow
             };
 
-            auditRepository.AddItem(auditRecord);
+            auditRepository.SaveItem(auditRecord);
 
             return File(ms, "text/csv");
 

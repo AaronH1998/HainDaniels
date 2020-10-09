@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ViewChildren } from '@angular/core';
 
 @Component({
   selector: 'app-product-details-field',
@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ProductDetailsFieldComponent implements OnInit {
   @Input() field:string;
   @Input() name:string;
+  @ViewChild('input') input;
   constructor() { }
 
   ngOnInit(): void {

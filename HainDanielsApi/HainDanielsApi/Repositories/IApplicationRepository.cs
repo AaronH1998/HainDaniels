@@ -6,6 +6,6 @@ namespace HainDanielsApi.Repositories
     {
         IEnumerable<T> GetItems();
 
-        void AddItem(T t);
+        void SaveItem(T t);
     }
 }

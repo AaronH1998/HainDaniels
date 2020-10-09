@@ -1,4 +1,12 @@
-<h2>{{title}} {{product.M3Item}}</h2>
+<h2>
+    <a (click)="goBack()" class="k-icon k-i-arrow-left"></a>  
+    {{title}} {{product.M3Item}} 
+    <a>
+        <i *ngIf="mode=='view'" class="k-icon k-i-pencil" (click)="enableEditing()"></i>
+        <i *ngIf="mode=='edit'" class="k-icon k-i-eye" (click)="disableEditing()"></i>
+    </a> 
+
+</h2>
 
 <form>
     <div class="form-horizontal">

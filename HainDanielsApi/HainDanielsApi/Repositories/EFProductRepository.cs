@@ -23,7 +23,7 @@ namespace HainDanielsApi.Repositories
             return context.Products;
         }
 
-        public void AddItem(Product product)
+        public void SaveItem(Product product)
         {
             var productEntity = context.Products.FirstOrDefault(p => p.M3Item == product.M3Item);
 

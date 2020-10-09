@@ -18,7 +18,7 @@ namespace HainDanielsApi.Repositories
             return context.Audit;
         }
 
-        public void AddItem(AuditRecord record)
+        public void SaveItem(AuditRecord record)
         {
             var auditRecordEntity = context.Audit.FirstOrDefault(p => p.ID == record.ID);
 

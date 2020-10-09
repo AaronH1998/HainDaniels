@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+import { Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../product';
+import { ProductDetailsFieldComponent } from '../product-details-field/product-details-field.component';
 import { ProductService } from '../services/product.service';
 
 @Component({
@@ -13,7 +15,10 @@ export class ProductDetailsComponent implements OnInit {
   product: Product= {
     M3Item:0,Description:'',JarCode:'',VarietyCode:'',Zambelli:'',Label:0,Cap:'',Domino:'',UnitsPerCase:0,NetWeight:0,PalletQyt:0,SalesDays:0,BatchOrderMultiples:0
   };
-  constructor(private productService:ProductService, private route:ActivatedRoute) { }
+  @ViewChildren(ProductDetailsFieldComponent) fieldComponents;
+  mode:string = "view";
+
+  constructor(private productService:ProductService, private route:ActivatedRoute, private location:Location) { }
 
   ngOnInit(): void {
     let productId = this.route.snapshot.paramMap.get("productId");
@@ -24,5 +29,23 @@ export class ProductDetailsComponent implements OnInit {
     this.productService.getProduct(productId).subscribe((data)=>{
       this.product = data;
     });
+  }
+  
+  goBack(){
+    this.location.back();
+  }
+
+  enableEditing(){
+    this.fieldComponents.forEach(child => {
+      child.input.nativeElement.readOnly = false;
+    });
+    this.mode = "edit";
+  }
+
+  disableEditing(){
+    this.fieldComponents.forEach(child => {
+      child.input.nativeElement.readOnly = true;
+    });
+    this.mode = "view";
   }
 }
